@@ -15,7 +15,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
-export const Home = () => {
+import { Link } from "react-router-dom";
+export const Home = ({ setCatchIndex, categories }) => {
   const sliders = [
     {
       title: "Delicious Food & Drinks",
@@ -36,50 +37,7 @@ export const Home = () => {
 
   const imageUrl = "/bg.jpg";
 
-  const categories = [
-    {
-      title: "Sushi",
-      foods: [
-        { title: "Sushi Title", img: "/sushi1.png", rate: "5", price: "28" },
-        { title: "Sushi Title", img: "/sushi2.png", rate: "4", price: "28" },
-        { title: "Sushi Title", img: "/sushi3.png", rate: "4", price: "28" },
-        { title: "Sushi Title", img: "/sushi4.png", rate: "4", price: "28" },
-      ],
-      index: 0,
-    },
-    {
-      title: "Pizza",
-      foods: [
-        { title: "Pizza Title", img: "/pizza1.png", rate: "4", price: "28" },
-        { title: "Pizza Title", img: "/pizza2.png", rate: "4", price: "28" },
-        { title: "Pizza Title", img: "/pizza3.png", rate: "4", price: "28" },
-        { title: "Pizza Title", img: "/pizza4.png", rate: "4", price: "28" },
-      ],
-      index: 1,
-    },
-    {
-      title: "Food",
-      foods: [
-        { title: "Food Title", img: "/food1.png", rate: "4", price: "28" },
-        { title: "Food Title", img: "/food2.png", rate: "4", price: "28" },
-        { title: "Food Title", img: "/food3.png", rate: "4", price: "28" },
-        { title: "Food Title", img: "/food4.png", rate: "4", price: "28" },
-      ],
-      index: 2,
-    },
-    {
-      title: "Drink",
-      foods: [
-        { title: "Drink Title", img: "/drink1.png", rate: "4", price: "28" },
-        { title: "Drink Title", img: "/drink2.png", rate: "4", price: "28" },
-        { title: "Drink Title", img: "/drink3.png", rate: "4", price: "28" },
-        { title: "Drink Title", img: "/drink4.png", rate: "4", price: "28" },
-      ],
-      index: 3,
-    },
-  ];
-
-  const FoodCard = ({ food }) => {
+  const FoodCard = ({ food, catname }) => {
     return (
       <div className="flex flex-col  items-center justify-center border border-gray-200 p-4 shadow-md rounded-md">
         {/* Food Image */}
@@ -111,13 +69,18 @@ export const Home = () => {
         </p>
 
         {/* Add to Cart Button */}
-        <button className="bg-yellow-400 text-white font-semibold py-2 px-4 text-sm rounded-md hover:bg-yellow-500 transition duration-300">
-          ДЭЛГЭРЭНГҮЙ
+        <button
+          onClick={() => setCatchIndex(food.index)}
+          className="bg-yellow-400 text-white font-semibold py-2 px-4 text-sm rounded-md hover:bg-yellow-500 transition duration-300"
+        >
+          <Link to={"/detail/" + catname + "/" + food.index}>
+            ДЭЛГЭРЭНГҮЙ{food.index}
+          </Link>
         </button>
       </div>
     );
   };
- 
+
   const [selected, setSelected] = useState(0);
 
   return (
@@ -193,7 +156,7 @@ export const Home = () => {
             <div className="flex flex-col items-center">
               <h1 className="text-[30px] font-[Pacifico]">Open Hours</h1>
               <div className="text-[#e0b531] flex gap-2">
-              <FaRegSnowflake size={16} />
+                <FaRegSnowflake size={16} />
                 <FaRegSnowflake size={22} />
                 <FaRegSnowflake size={16} />
               </div>
@@ -214,9 +177,9 @@ export const Home = () => {
           <div className="flex flex-col items-center py-6">
             <h1 className="text-[30px] font-[Pacifico]">Specials Menus</h1>
             <div className="text-[#e0b531] flex gap-2">
-            <FaRegSnowflake size={16} />
-                <FaRegSnowflake size={22} />
-                <FaRegSnowflake size={16} />
+              <FaRegSnowflake size={16} />
+              <FaRegSnowflake size={22} />
+              <FaRegSnowflake size={16} />
             </div>
           </div>{" "}
           {/* ------------------------------------MENU TITLE-------------------------------------------- */}
@@ -242,8 +205,8 @@ export const Home = () => {
               .map((category) => (
                 <div key={category.index}>
                   <div className="flex flex-wrap gap-y-6 justify-evenly">
-                    {category.foods.map((food, index) => (
-                      <FoodCard key={index} food={food} />
+                    {category.foods.map((food) => (
+                      <FoodCard catname={category.title} food={food} />
                     ))}
                   </div>
                 </div>
