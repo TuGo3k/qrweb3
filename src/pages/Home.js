@@ -16,7 +16,7 @@ import { FaGoogle } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
-export const Home = ({ setCatchIndex, categories }) => {
+export const Home = ({ setCatchIndex, categories, foods }) => {
   const sliders = [
     {
       title: "Delicious Food & Drinks",
@@ -54,11 +54,11 @@ export const Home = ({ setCatchIndex, categories }) => {
 
         {/* Rating */}
         <div className="flex mb-2">
-          {Array.from({ length: 5 }).map((_, index) =>
-            index < food.rate ? (
-              <FaStar key={index} className="text-yellow-400" />
+          {Array.from({ length: 5 }).map((_, id) =>
+            id < food.rate ? (
+              <FaStar key={id} className="text-yellow-400" />
             ) : (
-              <FaRegStar key={index} className="text-gray-300" />
+              <FaRegStar key={id} className="text-gray-300" />
             )
           )}
         </div>
@@ -70,19 +70,17 @@ export const Home = ({ setCatchIndex, categories }) => {
 
         {/* Add to Cart Button */}
         <button
-          onClick={() => setCatchIndex(food.index)}
+          onClick={() => setCatchIndex(food.id)}
           className="bg-yellow-400 text-white font-semibold py-2 px-4 text-sm rounded-md hover:bg-yellow-500 transition duration-300"
         >
-          <Link to={"/detail/" + catname + "/" + food.index}>
-            ДЭЛГЭРЭНГҮЙ{food.index}
-          </Link>
+          <Link to={"/detail/" + food.id}>ДЭЛГЭРЭНГҮЙ</Link>
         </button>
       </div>
     );
   };
 
   const [selected, setSelected] = useState(0);
-
+  // console.log(foods);
   return (
     <div>
       {/* Header */}
@@ -184,34 +182,40 @@ export const Home = ({ setCatchIndex, categories }) => {
           </div>{" "}
           {/* ------------------------------------MENU TITLE-------------------------------------------- */}
           <div className="flex  w-full justify-evenly p-2 text-[18px]">
-            {categories.map((item, index) => (
+            {categories.map((item) => (
               <div
-                onClick={() => setSelected(index)}
+                onClick={() => setSelected(item.id)}
                 className={`cursor-pointer ${
-                  selected === index
+                  selected === item.id
                     ? "text-[#e0b531] font-bold"
                     : "text-gray-500"
                 }`}
-                key={index}
+                key={item.id}
               >
                 {item.title}
               </div>
             ))}
           </div>
           {/* ------------------------------------MENU ITEMS-------------------------------------------- */}
-          <div className="w-full my-6 px-6">
-            {categories
-              .filter((el) => selected === el.index)
-              .map((category) => (
-                <div key={category.index}>
-                  <div className="flex flex-wrap gap-y-6 justify-evenly">
-                    {category.foods.map((food) => (
-                      <FoodCard catname={category.title} food={food} />
-                    ))}
-                  </div>
+          <div className="w-full my-6 px-6 flex flex-wrap justify-evenly gap-6">
+            {foods
+              .filter((el) => selected === el.catId)
+              .map((food) => (
+                <div key={food.id}>
+                  
+                    <FoodCard key={food.id} catname={food.title} food={food} />
+                    {/* {foods.map((food) => (
+                      <FoodCard
+                        key={food.sushi.id}
+                        catname={food.title}
+                        food={food}
+                      />
+                    ))} */}
+                 
                 </div>
               ))}
           </div>
+          {/* // .filter((food) => food.id === food.id) */}
         </div>
         <div className="flex flex-col items-center text-center p-8 max-w-md mx-auto bg-white ">
           <h2 className="text-4xl italic font-serif text-gray-700 mb-2">

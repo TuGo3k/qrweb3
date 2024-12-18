@@ -1,35 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
-
+import { FaArrowLeft } from "react-icons/fa6";
 const FoodDetail = ({ foods }) => {
-  const { catename, id } = useParams(); // Get the food ID from the URL
+  const { id } = useParams(); // Get the food ID from the URL
   const navigate = useNavigate(); // Hook for navigating back
   const [food, setFood] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setFood(() =>
-      foods.find(
-        (food) =>
-          food.title === catename && food.foods.find((e) => e.index === id)
-      )
-    );
-  }, [foods]);
+    // foods.forEach((e) => {
+    //   console.log("=-=-=-1=" + e);
+    // });
+    setFood(foods.find((food) => food.id === parseInt(id)));
+    // console.log(foods[0] + "=-=-=");
+    // setIsLoading(false);
+  }, [id, foods]);
 
-  if (!food) {
-    return (
-      <div className="flex justify-center items-center h-screen text-red-600">
-        <p>Food not found</p>
-      </div>
-    );
-  }
+  // if (!food) {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">
+  //       <p>Loading...</p>
+  //     </div>
+  //   );
+  // }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
+    <div className="min-h-screen  ">
       {/* Food Detail Container */}
-      <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+      <div className="max-w-5xl mx-auto bg-white   overflow-hidden">
+      <div className="w-full flex justify-center p-4 bg-[#222222] text-[25px] font-bold text-white">
+        Delicious
+      </div>
         {/* Food Image */}
-        <div className="relative h-[400px] bg-gray-200">
+        <div className="relative h-[300px] bg-gray-200">
           <img
             src={food.img}
             alt={food.title}
@@ -68,9 +72,9 @@ const FoodDetail = ({ foods }) => {
           {/* Back Button */}
           <button
             onClick={() => navigate(-1)}
-            className="text-white bg-[#e0b531] px-6 py-2 rounded-md hover:bg-[#d1a629] transition duration-300"
+            className="text-white bg-[#e0b531] px-3 py-2 rounded-md hover:bg-[#d1a629] transition duration-300 flex items-center gap-3 "
           >
-            Go Back
+            <FaArrowLeft />БУЦАХ
           </button>
         </div>
       </div>

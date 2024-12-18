@@ -8,61 +8,371 @@ function App() {
   const categories = [
     {
       title: "Sushi",
-      foods: [
-        {
-          title: "Sushi Tit2le",
-          description:
-            "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
-          ingredients: [
-            "Fresh Salmon",
-            "Avocado",
-            "Seaweed",
-            "Rice",
-            "Soy Sauce",
-            "Wasabi",
-          ],
-          img: "/sushi1.png",
-          rate: "5",
-          price: "28",
-          index: 0,
-        },
-        { title: "Sushi Title", img: "/sushi2.png", rate: "4", price: "28" },
-        { title: "Sushi Title", img: "/sushi3.png", rate: "4", price: "28" },
-        { title: "Sushi Title", img: "/sushi4.png", rate: "4", price: "28" },
-      ],
-      index: 0,
+      id: 0,
     },
     {
       title: "Pizza",
-      foods: [
-        { title: "Pizza Title", img: "/pizza1.png", rate: "4", price: "28" },
-        { title: "Pizza Title", img: "/pizza2.png", rate: "4", price: "28" },
-        { title: "Pizza Title", img: "/pizza3.png", rate: "4", price: "28" },
-        { title: "Pizza Title", img: "/pizza4.png", rate: "4", price: "28" },
-      ],
-      index: 1,
+      id: 1,
     },
     {
       title: "Food",
-      foods: [
-        { title: "Food Title", img: "/food1.png", rate: "4", price: "28" },
-        { title: "Food Title", img: "/food2.png", rate: "4", price: "28" },
-        { title: "Food Title", img: "/food3.png", rate: "4", price: "28" },
-        { title: "Food Title", img: "/food4.png", rate: "4", price: "28" },
-      ],
-      index: 2,
+      id: 2,
     },
     {
-      title: "Drink",
-      index: 3,
+      title: "Drinks",
+      id: 3,
+    },
+  ];
+
+  const fakefoods = [
+    {
+      id: 0,
+      title: "1rhool",
+      catId: 0,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/sushi1.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 1,
+      title: "Sushi Title 23",
+      catId: 0,
+
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/sushi1.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 2,
+      title: "Beverage 1",
+      catId: 3,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/sushi1.png",
+      rate: "4",
+      price: "28",
     },
   ];
 
   const foods = [
-    { title: "Drink Title", img: "/drink1.png", rate: "4", price: "28" },
-    { title: "Drink Title", img: "/drink2.png", rate: "4", price: "28" },
-    { title: "Drink Title", img: "/drink3.png", rate: "4", price: "28" },
-    { title: "Drink Title", img: "/drink4.png", rate: "4", price: "28" },
+    {
+      id: 0,
+      title: "Shushi",
+      catId: 0,
+      title: "Sushi Title",
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/sushi1.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 1,
+      title: "Sushi Title",
+      catId: 0,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/sushi2.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 2,
+      title: "Sushi Title",
+      catId: 0,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/sushi3.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 3,
+      title: "Sushi Title",
+      catId: 0,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/sushi4.png",
+      rate: "4",
+      price: "28",
+    },
+
+    {
+      id: 4,
+      title: "Pizza Title",
+      catId: 1,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/pizza1.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 5,
+      title: "Pizza Title",
+      catId: 1,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/pizza2.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 6,
+      title: "Pizza Title",
+      catId: 1,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/pizza3.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 7,
+      title: "Pizza Title",
+      catId: 1,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/pizza4.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 8,
+      title: "Food Title",
+      catId: 2,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/food1.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 9,
+      title: "Food Title",
+      catId: 2,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/food2.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 10,
+      title: "Food Title",
+      catId: 2,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/food3.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 11,
+      title: "Food Title",
+      catId: 2,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/food4.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 12,
+      title: "Drink Title",
+      catId: 3,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/drink1.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 13,
+      title: "Drink Title",
+      catId: 3,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/drink2.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 14,
+      title: "Drink Title",
+      catId: 3,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/drink3.png",
+      rate: "4",
+      price: "28",
+    },
+    {
+      id: 15,
+      title: "Drink Title",
+      catId: 3,
+      description:
+        "This is a mouth-watering sushi roll with fresh salmon, avocado, and crispy seaweed. Served with soy sauce and wasabi.",
+      ingredients: [
+        "Fresh Salmon",
+        "Avocado",
+        "Seaweed",
+        "Rice",
+        "Soy Sauce",
+        "Wasabi",
+      ],
+      img: "/drink4.png",
+      rate: "4",
+      price: "28",
+    },
   ];
 
   const [catchIndex, setCatchIndex] = useState([]);
@@ -73,13 +383,14 @@ function App() {
           exact
           path="/"
           element={
-            <Home categories={categories} setCatchIndex={setCatchIndex} />
+            <Home
+              categories={categories}
+              setCatchIndex={setCatchIndex}
+              foods={foods}
+            />
           }
         />
-        <Route
-          path="/detail/:catname/:id"
-          element={<FoodDetail foods={categories} />}
-        />
+        <Route path="/detail/:id" element={<FoodDetail foods={foods} />} />
       </Routes>
     </Router>
   );
