@@ -110,9 +110,9 @@ export const Home = ({ setCatchIndex, categories, foods }) => {
                 {el.title}
               </h1>
               <p className="text-white">{el.description}</p>
-              <button className="text-white bg-[#e0b531] rounded-md p-2 text-[12px] font-semibold">
+              {/* <button className="text-white bg-[#e0b531] rounded-md p-2 text-[12px] font-semibold">
                 ДЭЛГЭРЭНГҮЙ
-              </button>
+              </button> */}
             </div>
           </SwiperSlide>
         ))}
@@ -130,9 +130,9 @@ export const Home = ({ setCatchIndex, categories, foods }) => {
             { icon: FaList, label: "Many Menu" },
             { icon: FaCakeCandles, label: "Food Cake" },
             { icon: FaGlassMartini, label: "Juice Drink" },
-          ].map((item, idx) => (
+          ].map((item, id) => (
             <div
-              key={idx}
+              key={id}
               className="flex flex-col space-y-6 pb-4 items-center text-center "
             >
               <div className="border-[#e0b531] border-2 bg-[#e0b531] m-2 w-[80px] h-[80px] rounded-full flex justify-center items-center">
